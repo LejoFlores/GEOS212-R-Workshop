@@ -2,6 +2,8 @@ GEOS 212 R Flood Frequency Analysis Example
 ================
 2023-03-11
 
+### By: Lejo Flores
+
 ## Introduction
 
 In this RMarkdown document, I show how we can use the R programming
@@ -21,7 +23,7 @@ rather than having to use a point-and-click set of menus. This is nice
 because if we mess up a plot or want to add something, we can change or
 add commands and just rerun the plotting clode.
 
-### First things
+## First things
 
 The first things we need to do in our code is to tell R where our
 working directory is (i.e., the folder on our computer where we want to
@@ -59,7 +61,7 @@ library('plotly')
     ## 
     ##     layout
 
-### Prepare to Retrieve Peak Flow Data
+## Prepare to Retrieve Peak Flow Data
 
 Now we need to prepare to retrieve the data. Specifically, we will
 create a couple of variables that will store our USGS 8-digit site ID,
@@ -84,7 +86,7 @@ function we will use to get the data requires that the site ID be passed
 as a string. Similarly, the start and end dates are strings that are
 specially formatted as `YYYY-MM-DD`.
 
-### Now Get the Data
+## Now Get the Data
 
 Now we call the function `readNWISpeak` to get annual peak flow data. We
 are able to use this function because when whe called
@@ -136,7 +138,7 @@ station_nm
 
     ## [1] "SALMON RIVER AT WHITE BIRD ID"
 
-### Create a Plot
+## Create a Plot
 
 Now let’s create a very simple plot – containing labels – of the annual
 peak flow versus time. To do this we will invoke the `ggplot()` method
@@ -161,7 +163,7 @@ ggplot() +
 
 ![](FloodFrequencyAnalysis_Ex_files/figure-gfm/plot_peak_flows-1.png)<!-- -->
 
-### Perform the Flood Frequency Analysis
+## Perform the Flood Frequency Analysis
 
 Now it’s time to do the flood frequency analysis that we did in the lab.
 If you recall the first thing that we did with our peak flow data was
@@ -271,7 +273,7 @@ t_gumbel <- 1 / p_e_gumbel
 q_gumbel = u - alpha*log(-log(p_ne_gumbel)) 
 ```
 
-### Plot the Results
+## Plot the Results
 
 ``` r
 p2 <- ggplot() + 
@@ -291,7 +293,7 @@ p2 # Tell R to show the plot
 Based on our previous description of the first plot we made above, can
 you interpret what each line of the above is doing?
 
-### Get Values for the 100-year Flood
+## Get Values for the 100-year Flood
 
 A really nice thing about R and other programming languages are that I
 can get a more precise estimate of the 100-year (or other return
@@ -332,7 +334,7 @@ q100_gumbel
     ## $y
     ## [1] 132877.5
 
-### Reflection Questions
+## Reflection Questions
 
 1.  How could we repeat this analysis for a different gage and what
     would we have to change?
@@ -340,7 +342,7 @@ q100_gumbel
     the 100-year flood, how might you determine that you have less than,
     say 99 years of data?
 
-### Bonus Exercise
+## Bonus Exercise
 
 What does the following code do?
 
