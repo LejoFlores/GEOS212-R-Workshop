@@ -199,8 +199,10 @@ peak flow data we have. Similarly the Gringorten equation was:
 
 $$
 P_E = \frac{i - \alpha}{N + 1 - 2\alpha}
-$$ where $i$ and $N$ are the same as before, and $\alpha$ is an
-empirical parameter we took as 0.44.
+$$
+
+where $i$ and $N$ are the same as before, and $\alpha$ is an empirical
+parameter we took as 0.44.
 
 The amazingly powerful thing about R and other programming languages
 like Python is that we can perform calculations with our vectors just

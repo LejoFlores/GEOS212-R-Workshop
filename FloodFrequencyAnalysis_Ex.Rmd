@@ -87,6 +87,7 @@ where $i$ equals the rank of the flow and $N$ is the number of years of peak flo
 $$
 P_E = \frac{i - \alpha}{N + 1 - 2\alpha}
 $$
+
 where $i$ and $N$ are the same as before, and $\alpha$ is an empirical parameter we took as 0.44. 
 
 The amazingly powerful thing about R and other programming languages like Python is that we can perform calculations with our vectors just using simple operators like `+`, `-`, `*`, and `/` for addition, subtraction, element-by-element multiplication, and element-by-element division. [Note: for those asking, yes, we can also carry out more complicated matrix-vector and matrix-matrix multiplications, as well as matrix inversion in R. But we'll leave that for another time.] As such, we can compute the exceedence probability and return intervals for the peak flows as follows:
