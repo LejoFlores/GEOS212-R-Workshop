@@ -48,3 +48,11 @@ p2 <- ggplot() +
   x = 'Return Interval [Years]', y = 'Peak Flow [cfs]')
 
 p2
+
+q100_weibull = approx(t_weibull,q_sort, 100.0, method='linear')
+q100_gringorton = approx(t_gringorten,q_sort, 100.0, method='linear')
+q100_gumbel = approx(t_gumbel,q_gumbel, 100.0, method='linear')
+
+q100_weibull
+q100_gringorton
+q100_gumbel
