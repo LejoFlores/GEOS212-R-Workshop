@@ -188,12 +188,16 @@ Now, we’ll use the Weibull and Gringorten plotting position formulas to
 compute exceedance probabilities for each of our flows. Recall these
 equations are as follows for,
 
-Weibull: $$
+Weibull:
+
+$$
 P_E = \frac{i}{N+1}
 $$
 
 where $i$ equals the rank of the flow and $N$ is the number of years of
-peak flow data we have. Similarly the Gringorten equation was: $$
+peak flow data we have. Similarly the Gringorten equation was:
+
+$$
 P_E = \frac{i - \alpha}{N + 1 - 2\alpha}
 $$ where $i$ and $N$ are the same as before, and $\alpha$ is an
 empirical parameter we took as 0.44.
@@ -230,7 +234,9 @@ and,
 
 $$
 u = \bar{x} - 0.5772\alpha
-$$ where $\bar{x}$ was the sample mean (the mean of our peak flows), and
+$$
+
+where $\bar{x}$ was the sample mean (the mean of our peak flows), and
 $s_x$ was the sample standard deviation (the standard deviation of our
 peak flows). Another cool think about R and other programming languages
 is that doing things like computing means and standard deviations of
@@ -256,7 +262,9 @@ the Gumbel distribution is given as,
 
 $$
 q_P = u - \alpha\cdot \ln\left(-\ln \left(P_{NE}\right) \right)
-$$ Where $q_P$ is the flow corresponding to the $P_{NE}$ non-exceedence
+$$
+
+Where $q_P$ is the flow corresponding to the $P_{NE}$ non-exceedence
 probability.
 
 ``` r

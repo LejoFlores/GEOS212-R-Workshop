@@ -77,11 +77,13 @@ rank <- 1:length(q_sort)
 Now, we'll use the Weibull and Gringorten plotting position formulas to compute exceedance probabilities for each of our flows. Recall these equations are as follows for,
 
 Weibull:
+
 $$
 P_E = \frac{i}{N+1}
 $$
 
 where $i$ equals the rank of the flow and $N$ is the number of years of peak flow data we have. Similarly the Gringorten equation was:
+
 $$
 P_E = \frac{i - \alpha}{N + 1 - 2\alpha}
 $$
@@ -111,6 +113,7 @@ and,
 $$
 u = \bar{x} - 0.5772\alpha
 $$
+
 where $\bar{x}$ was the sample mean (the mean of our peak flows), and $s_x$ was the sample standard deviation (the standard deviation of our peak flows). Another cool think about R and other programming languages is that doing things like computing means and standard deviations of data are so common that we're provided built-in functions to compute them. So, in the following we can compute the mean by issuing the command `xbar <- mean(q_sort)` and the standard deviation by issuing the command `s_x <- sd(q_sort)`. 
 
 Also note that I'm computing the values of the flows for the Gumbel model a little differently. I am specifying the non-exceedence probabilities at which I'd like to calculate the flows. And then I'm using the __inverse__ Gumbel distribution to calculate what those flows would be, given the parameter values I've calculated. I'm doing it this way because, since the Gumbel distribution is a parametric model I can get the value of the flow at whatever return interval I want, ___regardless___ of whether or not I have the length of record to support calculation of that return interval. In this case, I use the `seq()` command to give me a vector of points starting at 0.001 and going to 0.999 in increments of 0.001. A non-exceedence probability of 0.999 (i.e., a flow that ___would not___ be exceeded 99.9% of years, on average) corresponds to a return interval of 1000 years. The inverse of the Gumbel distribution is given as,
@@ -118,6 +121,7 @@ Also note that I'm computing the values of the flows for the Gumbel model a litt
 $$
 q_P = u - \alpha\cdot \ln\left(-\ln \left(P_{NE}\right) \right)
 $$
+
 Where $q_P$ is the flow corresponding to the $P_{NE}$ non-exceedence probability. 
 ```{r flood_frequency_analysis_gumbel}
 # Compute return intervals of flows using Gumbel
