@@ -184,7 +184,6 @@ df_new <- data.frame(qdates,daynum)
 
 ggplot(df_new, aes(x = qdates, y = daynum)) + 
   geom_point() +
-  scale_y_continuous(labels = comma) +
   labs(title = paste(site_id, station_nm), 
   x = 'Date', y = 'What is This?') +
   stat_smooth(method='lm', formula = y ~ x)

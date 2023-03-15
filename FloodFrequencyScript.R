@@ -14,7 +14,11 @@ df <- readNWISpeak(site_id, startDate = start_date, endDate = end_date)
 
 station_nm <- attr(df, 'siteInfo')$station_nm
 
-ggplot(data = df, aes(x = peak_dt, y = peak_va)) + geom_point()
+p1 <- ggplot(data = df, aes(x = peak_dt, y = peak_va)) + geom_point() +
+  labs(title=paste('Peak Flow for',site_id, station_nm), x='Time', 
+       y='Peak Flow [cfs]')
+ggsave('geos212-ffa-fig1.png',p1, width=10, height=8, units='in')
+
 
 q_sort <- sort(df$peak_va, decreasing = TRUE)
 rank <- 1:length(q_sort)
@@ -48,6 +52,7 @@ p2 <- ggplot() +
   x = 'Return Interval [Years]', y = 'Peak Flow [cfs]')
 
 p2
+ggsave('geos212-ffa-fig2.png',p2, width=10, height=8, units='in')
 
 q100_weibull = approx(t_weibull,q_sort, 100.0, method='linear')
 q100_gringorton = approx(t_gringorten,q_sort, 100.0, method='linear')
@@ -56,3 +61,18 @@ q100_gumbel = approx(t_gumbel,q_gumbel, 100.0, method='linear')
 q100_weibull
 q100_gringorton
 q100_gumbel
+
+qdates <- df$peak_dt
+daynum <- df$peak_dt - as.Date(format(df$peak_dt, format='%Y-01-01'))
+
+df_new <- data.frame(qdates,daynum)
+
+p3 <- ggplot(df_new, aes(x = qdates, y = daynum)) + 
+  geom_point() +
+  scale_y_continuous(labels = comma) +
+  labs(title = paste(site_id, station_nm), 
+       x = 'Date', y = 'What is This?') +
+  stat_smooth(method='lm', formula = y ~ x)
+
+p3
+ggsave('geos212-ffa-fig3.png',p3, width=10, height=8, units='in')
